@@ -3,7 +3,9 @@ public enum Color {
 }
 
 public enum Value {
-    ACE(14), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8), NINE(9), TEN(10), JACK(11), QUEEN(12), KING(13);
+    ACE(14), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7),
+    EIGHT(8), NINE(9), TEN(10), JACK(11), QUEEN(12), KING(13);
+    
     private int value;
 
     private Value(int value){
@@ -18,10 +20,6 @@ public enum Value {
 public class Card {
     private Color color;
     private Value value;
-
-    public Card(){
-
-    }
 
     public Card(Color color, Value value){
         this.color = color;
@@ -44,19 +42,15 @@ public class Card {
         this.value = value;
     }
 
-    public int getValue(){
-        return this.value.getValue();
+    public int compareTo(Card card){
+        if (this.value.getValue() < card.getValue().getValue())
+            return -1;
+        else
+	    return (this.value.getValue() == card.getValue().getValue() ? 0 : 1);
     }
 
-    public int compareTo(Card card){
-        if (this.value.getValue() < card.getValue().getValue()){
-            return -1;
-        }else{
-            if(this.value.getValue() == card.getValue().getValue()){
-                return 0;
-            }else{
-                return 1;
-            }
-        }
+    @Override
+    public boolean equals(Card c){
+        return (c.getValue() == this.value && c.getColor() == this.color);
     }
 }
