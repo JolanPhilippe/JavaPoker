@@ -47,7 +47,7 @@ public class Game {
 	playCard(c1);
     }
 
-    public void addRive(Card c1){
+    public void addRiver(Card c1){
 	playCard(c1);
     }
 
